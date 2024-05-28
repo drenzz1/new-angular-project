@@ -1,0 +1,49 @@
+
+
+<mat-drawer-container class="sidebar-container" autosize>
+  <mat-drawer mode="side" [opened]="!isCollapsed" class="sidebar">
+
+    <div class="sidebar-inner" [ngStyle]="{ background: colors.primary[400] }">
+      <button mat-icon-button (click)="toggleSidebar()">
+        <mat-icon>{{ isCollapsed ? 'menu' : 'menu_open' }}</mat-icon>
+      </button>
+
+      <div *ngIf="!isCollapsed"
+           class="profile-section">
+
+        <div class="profile-info">
+          <h2>Adonis</h2>
+          <h5>VP Fancy Admin</h5>
+        </div>
+      </div>
+
+      <mat-nav-list>
+        <h3>Data</h3>
+        <mat-list-item *ngFor="let item of dataItems" (click)="selectItem(item.title)" [class.active]="selected === item.title">
+          <mat-icon>{{ item.icon }}</mat-icon>
+          <span>{{ item.title }}</span>
+        </mat-list-item>
+
+        <h3>Pages</h3>
+        <mat-list-item *ngFor="let item of pageItems" (click)="selectItem(item.title)" [class.active]="selected === item.title">
+          <mat-icon>{{ item.icon }}</mat-icon>
+          <span>{{ item.title }}</span>
+        </mat-list-item>
+
+        <h3>Charts</h3>
+        <mat-list-item *ngFor="let item of chartItems" (click)="selectItem(item.title)" [class.active]="selected === item.title">
+          <mat-icon>{{ item.icon }}</mat-icon>
+          <span>{{ item.title }}</span>
+        </mat-list-item>
+
+        <h3>Clubs</h3>
+        <mat-list-item *ngFor="let item of clubItems" (click)="selectItem(item.title)" [class.active]="selected === item.title">
+          <mat-icon>{{ item.icon }}</mat-icon>
+          <span>{{ item.title }}</span>
+        </mat-list-item>
+      </mat-nav-list>
+    </div>
+  </mat-drawer>
+  <mat-slide-toggle></mat-slide-toggle>
+</mat-drawer-container>
+
